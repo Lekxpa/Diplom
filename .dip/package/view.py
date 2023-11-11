@@ -73,10 +73,24 @@ def request_msg():
     # print(name_user)
     if name_user.isalpha():
         phone_user = input('Укажите, пожалуйста, Ваш номер телефона в формате 79000000000: ')
-        if phone_user.isdigit():
+        if phone_user.isdigit() and len(str(phone_user)) = 11:
             time_user = input('Укажите, пожалуйста, удобные дату и время звонка в строке набора сообщения:\n\
         \nлибо нажмите кнопку menu для возврата в основное меню\n\
         \n/menu')
+            with open ('Phonebook.md', 'w', encoding = 'utf-8') as n:
+        n.write(f'# Телефонная книга\
+    \n|Фамилия Имя Отчество|Номер телефона|\
+    \n|-----------|-----------|')
+    n.close()
+    f = open('TelDict.csv','r', encoding='utf-8')
+    ls = f.read()
+    print(f'{ls}')
+     ls = symple_add()
+    with open('phone_dict.csv', 'a', encoding = 'utf-8') as file:
+        file.write(f'{ls[0]}; {ls[1]}\n')
+            file = open('request.csv', 'a', encoding = 'utf-8')
+            file.write(f'{update.effective_user.first_name}, {update.effective_user.id}, {update.message.text}, {datetime.now()}\n')
+            file.close()
             # time_us_lst = list(time_user)
             if not time_us_lst:
                 # print('Благодарим Вас за заявку! Мы свяжемся с Вами в указанное Вами время!')
