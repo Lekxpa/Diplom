@@ -9,8 +9,8 @@ import package.loggg
 
 
 
-# logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-#     level=logging.INFO)
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO)
 
 
 async def loggg(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -60,7 +60,7 @@ async def get_presentation(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # await update.message.reply_document(document=open('package\Презентация.pdf', 'rb'))
     await update.message.reply_document(document=open('C:/Users/Asus/Desktop/Презентация.pdf', 'rb'))
     # await update.message.reply_animation(animation='https://usagif.com/wp-content/uploads/gify/barbie-animated-usagif-22.gif')
-   
+    await update.message.reply_text(f'/menu')
 
 
 async def price(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -79,6 +79,15 @@ async def request(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # if text_message = None:
     await update.message.reply_text(f'Ваша заявка принята! Мы свяжемся с Вами в указанное Вами время!\n\
     \n/menu')
+
+
+async def yes(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(package.view.yes())
+
+
+async def no(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(package.view.no())
+
 
 
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
