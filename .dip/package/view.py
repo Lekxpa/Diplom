@@ -1,6 +1,14 @@
 from telegram import Update
 
 
+def start_bot_msg():
+    return f'start bot'
+
+
+def stop_bot_msg():
+    return f'stop bot'
+
+
 def start_msg(update: Update):
     return f'Приветствуем Вас, {update.effective_user.first_name},\n\
         \nна страничке маркетингового агентства\n\
@@ -72,7 +80,16 @@ def call():
         \n/menu'
     
 
-def request_msg():
-    return 'Укажите, пожалуйста, Ваше имя и номер телефона в строке набора сообщений: \n\
+def send_request():
+    return 'Благодарим Вас за заявку! Мы свяжемся с Вами в ближайшее время!\n\
+            \n/menu'
+
+
+def request():
+    return 'Нажмите, пожалуйста, кнопку send_request,\n\
+        \n/send_request\n\
+        \nчтобы автоматически отправить свои данные\n\
+        \n(имя и ник в Telegram)\n\
+        \nнашему менеджеру,чтобы он смог связаться с Вами,\n\
         \nлибо нажмите кнопку menu для возврата в основное меню\n\
         \n/menu'

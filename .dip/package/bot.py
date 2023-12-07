@@ -5,8 +5,7 @@ import datetime
 from datetime import datetime
 import package.view
 import package.set
-import package.loggg
-
+import package.commands
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -15,7 +14,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 async def loggg(update: Update, context: ContextTypes.DEFAULT_TYPE):
     file = open('dates.csv', 'a', encoding = 'utf-8')
-    file.write(f'{update.effective_user.first_name}, {update.effective_user.id}, {update.message.text}, {datetime.now()}\n')
+    file.write(f'{update.effective_user.first_name}, {update.effective_user.name}, {update.message.text}, {datetime.now()}\n')
     file.close()
 
 
@@ -46,11 +45,7 @@ async def portfolio(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
 
 async def get_presentation(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # await update.message.reply_document(document='https://docs.google.com/presentation/d/1y4Do2m-q6hxR3qADBzSi-aOHrtaYvAxNrJFVerFLrYI/edit?usp=sharing')
-    # await update.message.reply_copy(copy='https://docs.google.com/presentation/d/1y4Do2m-q6hxR3qADBzSi-aOHrtaYvAxNrJFVerFLrYI/edit?usp=sharing')
-    # await update.message.reply_document(document=open('package\Презентация.pdf', 'rb'))
     await update.message.reply_document(document=open('C:/Users/Asus/Desktop/Презентация.pdf', 'rb'))
-    # await update.message.reply_animation(animation='https://usagif.com/wp-content/uploads/gify/barbie-animated-usagif-22.gif')
     await update.message.reply_text(f'/menu')
 
 
@@ -63,22 +58,18 @@ async def contacts(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def send_request(update: Update, context: ContextTypes.DEFAULT_TYPE):
-     await update.message.reply_text(f'Благодарим Вас за заявку! Мы свяжемся с Вами в ближайшее время!\n\
-                    \n/menu')
+     await update.message.reply_text(package.view.send_request())
 
 
-async def request(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(f'Нажмите, пожалуйста, кнопку send_request,\n\
-        \n/send_request\n\
-        \nчтобы автоматически отправить свои данные\n\
-        \n(имя и ник в Telegram)\n\
-        \nнашему менеджеру,чтобы он смог связаться с Вами,\n\
-        \nлибо нажмите кнопку menu для возврата в основное меню\n\
-        \n/menu')
-    
+async def request_file(update: Update, context: ContextTypes.DEFAULT_TYPE):
     file = open('request.csv', 'a', encoding = 'utf-8')
     file.write(f'{update.effective_user.first_name}, {update.effective_user.id}, {update.effective_user.name}, {update.message.text}, {datetime.now()}\n')
     file.close()
+
+
+async def request(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(package.view.request())
+    await request_file(update, context)
     await loggg(update, context)
     
 

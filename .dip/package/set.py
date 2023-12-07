@@ -3,9 +3,9 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Top:
+class Tok_adm:
     token: str = '6634382782:AAFkVB2hHVod7ABrAYTgDq5AKB5QNv50Co4'
-    admin: int =  5199358937
+    # admin: str =  '6551035386'
+ 
     
-    
-bot = Bot(token=Top.token)
+bot = Bot(token=Tok_adm.token)
