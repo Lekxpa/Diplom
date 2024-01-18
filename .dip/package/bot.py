@@ -45,7 +45,8 @@ async def portfolio(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
 
 async def get_presentation(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_document(document=open('C:/Users/Asus/Desktop/Презентация.pdf', 'rb'))
+    # await update.message.reply_document(document=open('C:/Users/Asus/Desktop/Презентация.pdf', 'rb'))
+    await update.message.reply_text(text='https://docs.google.com/presentation/d/1y4Do2m-q6hxR3qADBzSi-aOHrtaYvAxNrJFVerFLrYI/edit#slide=id.g2afb878671b_0_14')
     await update.message.reply_text(f'/menu')
 
 
